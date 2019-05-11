@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-
+import ChirpCard from './Chirps'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: " ",
-      newArray: []
+      text: " ", //blank string 
+      newArray: [] //array of chirps will be appended here
     }
   }
-  handleSubmit = (e) => {
+
+  //have it start with 3 preloaded chirps rendered:
+  componentDidMount(){
+    let initialChirps= ["Katherine","George","Caroline"]
+    this.setState({newArray: initialChirps})
+  }
+  handleSubmit = (e) => { //class method called handleSubmit
     e.preventDefault();
-    this.setState({
+    this.setState({ //set new array using SPREAD OPERATOR SYNTAX
       newArray: [this.state.text, ...this.state.newArray],
-      text: "",
-      index: 0
+      text: "", //empty out text after submitted
+      index: 0 
 
     })
 
@@ -37,9 +43,7 @@ class App extends Component {
               <article className="col-md-12">
                 <div>
                   {this.state.newArray.map((text, index) => {
-                    return <div className="card border-primary" key={index}>
-                      <h3 className="card-body">{text}</h3>
-                    </div>
+                   return <ChirpCard text={text} key={index}/>
                   })}
                 </div>
               </article>

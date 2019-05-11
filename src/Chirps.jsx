@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 
 
-const Chirps = (props) => {
+const ChirpCard = ({text}) => {
   return (
-    <h3 className="card-body">{props.text}</h3>)
+    <div className="card border-primary">
+    <h3 className="card-body">{text}</h3>)
+    </div>)
+
 }
 
 
-
-
-
-
-
-export default Chirps
+export default ChirpCard
